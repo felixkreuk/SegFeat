@@ -40,8 +40,8 @@ tqdm==4.42.1
 
 ### 1. Clone the repository
 ```
-git clone https://github.com/felixkreuk/Phoneme-Boundary-Detection-using-Learnable-Segmental-Features.git segmentor
-cd segmentor
+git clone https://github.com/felixkreuk/SegFeat.git
+cd SegFeat
 ```
 
 ### 2. Data structure
