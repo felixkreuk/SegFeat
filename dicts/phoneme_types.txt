@@ -1,0 +1,46 @@
+-------------------------VOWELS--------------------------#
+# 0 - ae - VOWEL
+# 1 - ah - VOWEL
+# 2 - ao - VOWEL
+# 3 - aw - VOWEL
+# 4 - ay - VOWEL
+# 10 - eh - VOWEL
+# 13 - er - VOWEL
+# 14 - ey - VOWEL
+# 18 - ih - VOWEL
+# 19 - iy - VOWEL
+# 24 - ow - VOWEL
+# 25 - oy - VOWEL
+# 33 - uh - VOWEL
+# 34 - uw - VOWEL
+-------------------------GLISED--------------------------#
+# 11 - el - GLIDE
+# 17 - hh - GLIDE
+# 27 - r - GLIDE
+# 36 - w - GLIDE
+# 37 - y - GLIDE
+-------------------------NASALES-------------------------#
+# 12 - en - NASAL
+# 22 - m - NASAL
+# 23 - ng - NASAL
+--------------------------STOPS--------------------------#
+# 5 - b - STOP
+# 7 - d - STOP
+# 9 - dx - STOP
+# 16 - g - STOP
+# 21 - k - STOP
+# 26 - p - STOP
+# 31 - t - STOP
+-------------------------AFFRICATES----------------------#
+# 6 - ch - AFFRICATE
+# 20 - jh - AFFRICATE
+-------------------------FRICATIVES----------------------#
+# 8 - dh - FRICATIVE
+# 15 - f - FRICATIVE
+# 28 - s - FRICATIVE
+# 29 - sh - FRICATIVE
+# 32 - th - FRICATIVE
+# 35 - v - FRICATIVE
+# 38 - z - FRICATIVE
+---------------------------OTHER-------------------------#
+# 30 - sil - OTHER
