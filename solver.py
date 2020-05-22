@@ -23,8 +23,6 @@ class Solver(LightningModule):
 
         if config.dataset == "timit":
             self.datasetClass = TimitDataset
-        elif config.dataset == "word":
-            self.datasetClass = WordDataset
         elif config.dataset == "buckeye":
             self.datasetClass = BuckeyeDataset
         else:
@@ -46,10 +44,10 @@ class Solver(LightningModule):
         self.bin_acc = {'train': StatsMeter(),
                         'val':   StatsMeter(),
                         'test':  StatsMeter()}
-        self.device = 'cuda' if config.cuda else 'cpu'
+        self._device = 'cuda' if config.cuda else 'cpu'
 
         self.build_model()
-        logger.info(f"running on {self.device}")
+        logger.info(f"running on {self._device}")
         logger.info(f"rnn input size: {config.rnn_input_size}")
         logger.info(f"{self.segmentor}")
 
@@ -90,7 +88,7 @@ class Solver(LightningModule):
         if self.config.load_ckpt not in [None, "None"]:
             logger.info(f"loading checkpoint from: {self.config.load_ckpt}")
             model_dict = self.segmentor.state_dict()
-            weights = torch.load(self.config.load_ckpt)["state_dict"]
+            weights = torch.load(self.config.load_ckpt, map_location='cuda:0')["state_dict"]
             weights = {k.replace("segmentor.", ""): v for k,v in weights.items()}
             weights = {k: v for k,v in weights.items() if k in model_dict and model_dict[k].shape == weights[k].shape}
             model_dict.update(weights)
@@ -98,6 +96,7 @@ class Solver(LightningModule):
             logger.info("loaded checkpoint!")
             if len(weights) != len(model_dict):
                 logger.warning("some weights were ignored due to mismatch")
+                logger.warning(f"loaded {len(weights)}/{len(model_dict)} modules")
         else:
             logger.info("training from scratch")
 
@@ -249,13 +248,13 @@ class Solver(LightningModule):
     def validation_step(self, data_batch, batch_i):
         return self.generic_eval_step(data_batch, batch_i, 'val')
 
-    def validation_end(self, outputs):
+    def validation_epoch_end(self, outputs):
         return self.generic_eval_end(outputs, 'val')
 
     def test_step(self, data_batch, batch_i):
         return self.generic_eval_step(data_batch, batch_i, 'test')
 
-    def test_end(self, outputs):
+    def test_epoch_end(self, outputs):
         return self.generic_eval_end(outputs, 'test')
 
     def configure_optimizers(self):

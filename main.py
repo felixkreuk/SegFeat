@@ -71,11 +71,13 @@ def main(hparams):
             val_check_interval=hparams.val_check_interval,
             early_stop_callback=None,
             gpus=hparams.gpus,
-            show_progress_bar=False
+            show_progress_bar=False,
+            distributed_backend=None,
             )
 
-    trainer.fit(solver)
-    trainer.test()
+    if not hparams.test:
+        trainer.fit(solver)
+    trainer.test(solver)
 
 def parse_args():
     parser = argparse.ArgumentParser(description='segmentation')
@@ -88,6 +90,7 @@ def parse_args():
     parser.add_argument('--gpus', type=str, default='-1')
     parser.add_argument('--devrun', default=False, action='store_true', help='dev run on a dataset of size `devrun_size`')
     parser.add_argument('--devrun_size', type=int, default=10, help='size of dataset for dev run')
+    parser.add_argument('--test', default=False, action='store_true', help='flag to indicate to run a test epoch only (not training will take place)')
 
     parser.add_argument('--lr', type=float, default=0.001, help='initial learning rate')
     parser.add_argument('--optimizer', type=str, default='adam')
@@ -104,9 +107,9 @@ def parse_args():
     parser.add_argument('--val_ratio', type=float, default=0.1, help='precentage of validation from train')
 
     parser.add_argument('--rnn_input_size', type=int, default=50, help='number of inputs')
-    parser.add_argument('--rnn_hidden_size', type=int, default=100, help='RNN hidden layer size')
-    parser.add_argument('--rnn_dropout', type=float, default=0.0, help='dropout')
-    parser.add_argument('--birnn', default=True, help='BILSTM, if define will be biLSTM', action='store_true')
+    parser.add_argument('--rnn_hidden_size', type=int, default=200, help='RNN hidden layer size')
+    parser.add_argument('--rnn_dropout', type=float, default=0.3, help='dropout')
+    parser.add_argument('--birnn', default=True, help='BILSTM, if define will be biLSTM')
     parser.add_argument('--rnn_layers', type=int, default=2, help='number of lstm layers')
     parser.add_argument('--min_seg_size', type=int, default=1, help='minimal size of segment, examples with segments smaller than this will be ignored')
     parser.add_argument('--max_seg_size', type=int, default=100, help='see `min_seg_size`')
