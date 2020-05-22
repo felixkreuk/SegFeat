@@ -4,10 +4,12 @@ This repository provides a PyTorch implementation of the paper [Phoneme Boundary
 
 ## Paper
 [Phoneme Boundary Detection using Learnable Segmental Features](https://arxiv.org/pdf/2002.04992.pdf)
-
+</br>
 [Felix Kreuk](https://scholar.google.co.il/citations?user=UiERcYsAAAAJ&hl=en), [Yaniv Sheena](https://dblp.org/pers/s/Sheena:Yaniv.html), [Joseph Keshet](http://u.cs.biu.ac.il/~jkeshet/), [Yossi Adi](https://scholar.google.co.il/citations?user=4W-HuYYAAAAJ&hl=en)
-
+</br>
 45th International Conference on Acoustics, Speech, and Signal Processing [ICASSP 2020](https://2020.ieeeicassp.org/)
+
+Phoneme boundary detection plays an essential first step for a variety of speech processing applications such as speaker diarization, speech science, keyword spotting, etc. In this work, we propose a neural architecture coupled with a parameterized structured loss function to learn segmental representations for the task of phoneme boundary detection. First, we evaluated our model when the spoken phonemes were not given as input. Results on the TIMIT and Buckeye corpora suggest that the proposed model is superior to the baseline models and reaches state-of-the-art performance in terms of F1 and R-value. We further explore the use of phonetic transcription as additional supervision and show this yields minor improvements in performance but substantially better convergence rates. We additionally evaluate the model on a Hebrew corpus and demonstrate such phonetic supervision can be beneficial in a multi-lingual setting.
 
 If you find this implementation useful, please consider citing our work:
 ```
@@ -38,8 +40,8 @@ tqdm==4.42.1
 
 ### 1. Clone the repository
 ```
-git clone https://github.com/felixkreuk/Phoneme-Boundary-Detection-using-Learnable-Segmental-Features.git segmentor
-cd segmentor
+git clone https://github.com/felixkreuk/SegFeat.git
+cd SegFeat
 ```
 
 ### 2. Data structure
