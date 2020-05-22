@@ -161,3 +161,9 @@ optional arguments:
   --n_mels N_MELS       number of mels
   --n_mfcc N_MFCC       number of mfccs
 ```
+
+### 3. Testing
+To run a test epoch run the following command:
+```
+python main.py --wav_path /path/to/timit/ --dataset timit --delta_feats --dist_feats --load_ckpt segmentor.ckpt --test
+```
