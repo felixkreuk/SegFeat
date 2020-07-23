@@ -153,7 +153,14 @@ class TimitDictionary():
             self.phn_reduction_dict = {line.split(' ')[0].strip(): line.split(' ')[1].strip() for line in f.readlines()}
         self.words = set(self.phn_reduction_dict.values())
         self.n_words = len(self.words)
-        self._words2idx = {v: i for i,v in enumerate(self.words)}
+        self._words2idx = {'ae': 29, 'ah': 25, 'ao': 8, 'aw': 1, 'ay': 12, 'b': 9,
+                           'ch': 38, 'd': 6, 'dh': 19, 'dx': 32, 'eh': 0, 'el': 11,
+                           'en': 31, 'er': 16, 'ey': 5, 'f': 18, 'g': 34, 'hh': 28,
+                           'ih': 26, 'iy': 20, 'jh': 23, 'k': 7, 'm': 3, 'ng': 27,
+                           'ow': 24, 'oy': 2, 'p': 17, 'r': 4, 's': 36, 'sh': 33,
+                           'sil': 10, 't': 35, 'th': 14, 'uh': 37, 'uw': 30,
+                           'v': 15, 'w': 13, 'y': 21, 'z': 22}
+        self._idx2words = {v:k for k,v in self._words2idx.items()}
 
     def word2idx(self, word):
         word = self.phn_reduction_dict[word]
