@@ -74,7 +74,7 @@ Where `X.wav` is a raw waveform signal, and `X.phn` is its' corresponding phonem
 ```
 Where the two numbers each line represent the onset of offset of the phoneme (in samples), and the last element represents the phoneme identity.
 
-### 2. Training
+### 3. Training
 ```
 python main.py --wav_path /path/to/timit/dataset --dataset timit --delta_feats --dist_feats
 ```
@@ -162,7 +162,7 @@ optional arguments:
   --n_mfcc N_MFCC       number of mfccs
 ```
 
-### 3. Testing
+### 4. Testing
 To run a test epoch run the following command:
 ```
 python main.py --wav_path /path/to/timit/ --dataset timit --delta_feats --dist_feats --load_ckpt segmentor.ckpt --test
