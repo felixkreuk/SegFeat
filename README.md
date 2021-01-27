@@ -13,11 +13,13 @@ Phoneme boundary detection plays an essential first step for a variety of speech
 
 If you find this implementation useful, please consider citing our work:
 ```
-@article{kreuk2020phoneme,
-  title={Phoneme Boundary Detection using Learnable Segmental Features},
+@inproceedings{kreuk2020phoneme,
+  title={Phoneme boundary detection using learnable segmental features},
   author={Kreuk, Felix and Sheena, Yaniv and Keshet, Joseph and Adi, Yossi},
-  journal={arXiv preprint arXiv:2002.04992},
-  year={2020}
+  booktitle={ICASSP 2020-2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={8089--8093},
+  year={2020},
+  organization={IEEE}
 }
 ```
 
