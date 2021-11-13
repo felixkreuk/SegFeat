@@ -9,11 +9,11 @@ from pytorch_lightning import LightningModule
 from torch import optim
 from torch.utils.data import DataLoader
 
-from dataloader import (BuckeyeDataset, TimitDataset, collate_fn_padd,
+from .dataloader import (BuckeyeDataset, TimitDataset, collate_fn_padd,
                         phoneme_lebels_to_frame_labels,
                         segmentation_to_binary_mask)
-from model import Segmentor
-from utils import PrecisionRecallMetricMultiple, StatsMeter
+from .model import Segmentor
+from .utils import PrecisionRecallMetricMultiple, StatsMeter
 
 
 class Solver(LightningModule):

@@ -169,3 +169,31 @@ To run a test epoch run the following command:
 ```
 python main.py --wav_path /path/to/timit/ --dataset timit --delta_feats --dist_feats --load_ckpt segmentor.ckpt --test
 ```
+
+### 5. Demo
+
+You can use saved model on your files (currently only support model trained on timit)
+
+Python:
+
+```
+from segfeat.inference import SavedSegmentor
+import soundfile as sf
+import json
+
+filename = 'timit/data/val/dr1_faks0_sa1.wav'
+
+with open('configs/model_params.json', 'r') as p:
+    config = json.load(p)
+
+saved_model = SavedSegmentor(config, 'cuda:0', 'segmentor.ckpt')
+wav, sr = sf.read(filename)
+
+result = saved_model(wav, sr) # results/segmentation.json
+```
+
+Terminal:
+```
+python run_demo.py --file_or_dir timit/data/val/dr1_faks0_sa1.wav
+```
+
