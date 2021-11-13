@@ -15,7 +15,7 @@ from pytorch_lightning.logging import TestTubeLogger
 from torch.backends import cudnn
 from torch.utils.data import DataLoader, Dataset
 
-from solver import Solver
+from segfeat.solver import Solver
 
 
 def main(hparams):

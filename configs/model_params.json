@@ -1,0 +1,19 @@
+{
+    "feats": "mfcc", 
+    "n_mfcc": 13,
+    "delta_feats": true,
+    "dist_feats": true,
+    "n_mels": 40,
+    "n_fft": 160,
+
+    "rnn_hidden_size": 200,
+    "rnn_layers": 2,
+    "rnn_dropout": 0.3,
+    "birnn": true,
+
+    "n_classes": 39,
+    "dataset": "timit",
+
+    "min_seg_size": 1, 
+    "max_seg_size": 100
+}

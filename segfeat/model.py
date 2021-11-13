@@ -7,8 +7,18 @@ import torch.nn.functional as F
 class Segmentor(nn.Module):
     def __init__(self, hparams):
         super(Segmentor, self).__init__()
+
+        # work with dict as parameter
+        if type(hparams) == dict:
+            class Args:
+                pass
+            params = Args()
+            for key, value in hparams.items():
+                setattr(params, key, value)
+            hparams = params
+
         self.hparams = hparams
-        self.device = 'cuda' if hparams.cuda else 'cpu'
+        # self.device = 'cuda' if hparams.cuda else 'cpu'
         self.min_seg_size = hparams.min_seg_size
         self.max_seg_size = hparams.max_seg_size
 
